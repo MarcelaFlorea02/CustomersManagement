@@ -54,6 +54,7 @@
             loginButton.TabIndex = 1;
             loginButton.Text = "Login";
             loginButton.UseVisualStyleBackColor = false;
+            loginButton.Click += loginButton_Click;
             // 
             // WelcomeScreen
             // 

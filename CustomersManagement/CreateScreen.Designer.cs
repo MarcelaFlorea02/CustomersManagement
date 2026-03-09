@@ -44,90 +44,101 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.1F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(63, 61);
+            label1.Location = new Point(37, 37);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(343, 62);
+            label1.Size = new Size(214, 40);
             label1.TabIndex = 0;
             label1.Text = "Add Customer";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(80, 201);
+            label2.Location = new Point(47, 123);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(152, 41);
+            label2.Size = new Size(92, 25);
             label2.TabIndex = 1;
             label2.Text = "FirstName";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(80, 280);
+            label3.Location = new Point(47, 171);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(149, 41);
+            label3.Size = new Size(90, 25);
             label3.TabIndex = 2;
             label3.Text = "LastName";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(80, 362);
+            label4.Location = new Point(47, 221);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(88, 41);
+            label4.Size = new Size(54, 25);
             label4.TabIndex = 3;
             label4.Text = "Email";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(80, 440);
+            label5.Location = new Point(47, 268);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(103, 41);
+            label5.Size = new Size(62, 25);
             label5.TabIndex = 4;
             label5.Text = "Phone";
             // 
             // firstNameInput
             // 
-            firstNameInput.Location = new Point(258, 195);
+            firstNameInput.Location = new Point(152, 119);
+            firstNameInput.Margin = new Padding(2, 2, 2, 2);
             firstNameInput.Name = "firstNameInput";
-            firstNameInput.Size = new Size(437, 47);
+            firstNameInput.Size = new Size(259, 31);
             firstNameInput.TabIndex = 5;
             // 
             // lastNameInput
             // 
-            lastNameInput.Location = new Point(258, 280);
+            lastNameInput.Location = new Point(152, 171);
+            lastNameInput.Margin = new Padding(2, 2, 2, 2);
             lastNameInput.Name = "lastNameInput";
-            lastNameInput.Size = new Size(437, 47);
+            lastNameInput.Size = new Size(259, 31);
             lastNameInput.TabIndex = 6;
             // 
             // emailInput
             // 
-            emailInput.Location = new Point(258, 362);
+            emailInput.Location = new Point(152, 221);
+            emailInput.Margin = new Padding(2, 2, 2, 2);
             emailInput.Name = "emailInput";
-            emailInput.Size = new Size(437, 47);
+            emailInput.Size = new Size(259, 31);
             emailInput.TabIndex = 7;
             // 
             // phoneInput
             // 
-            phoneInput.Location = new Point(258, 440);
+            phoneInput.Location = new Point(152, 268);
+            phoneInput.Margin = new Padding(2, 2, 2, 2);
             phoneInput.Name = "phoneInput";
-            phoneInput.Size = new Size(437, 47);
+            phoneInput.Size = new Size(259, 31);
             phoneInput.TabIndex = 8;
             // 
             // saveButton
             // 
-            saveButton.Location = new Point(507, 617);
+            saveButton.Location = new Point(298, 376);
+            saveButton.Margin = new Padding(2, 2, 2, 2);
             saveButton.Name = "saveButton";
-            saveButton.Size = new Size(188, 58);
+            saveButton.Size = new Size(111, 35);
             saveButton.TabIndex = 9;
             saveButton.Text = "SAVE";
             saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // CreateScreen
             // 
-            AutoScaleDimensions = new SizeF(17F, 41F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(811, 774);
+            ClientSize = new Size(477, 472);
             Controls.Add(saveButton);
             Controls.Add(phoneInput);
             Controls.Add(emailInput);
@@ -138,6 +149,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "CreateScreen";
             Text = "CreateScreen";
             ResumeLayout(false);

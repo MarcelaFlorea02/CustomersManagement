@@ -11,6 +11,7 @@ namespace CustomersManagement
         {
             DashboardScreen dashboardScreen = new DashboardScreen();
             dashboardScreen.Show();
+            this.Hide();
         }
     }
 }

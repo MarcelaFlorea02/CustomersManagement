@@ -22,10 +22,12 @@ namespace CustomersManagement
             var customers = new List<Customer>();
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand();
+                connection.Open();
+                using SqlCommand command = new SqlCommand();
+                command.Connection = connection;
                 command.CommandText = "select * from Customer";
-
-                SqlDataReader dataReader = command.ExecuteReader(); 
+                
+                using SqlDataReader dataReader = command.ExecuteReader(); 
 
                 int ordId = dataReader.GetOrdinal("Id");
                 int ordFirstName = dataReader.GetOrdinal("FirstName");
@@ -42,7 +44,7 @@ namespace CustomersManagement
                         FirstName = dataReader.GetString(ordFirstName),
                         LastName = dataReader.GetString(ordLastName),
                         Email = dataReader.GetString(ordEmail),
-                        Phone = dataReader.GetString(ordPhone),
+                        Phone =dataReader.IsDBNull(ordPhone)? "" :dataReader.GetString(ordPhone),
                         CreatedAt = dataReader.GetDateTime(ordCreatedAt)
                     };
                     customers.Add(customer);
@@ -56,7 +58,9 @@ namespace CustomersManagement
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand();
+                connection.Open();
+                using SqlCommand command = new SqlCommand();
+                command.Connection = connection;
                 command.CommandText = "insert into Customer(FirstName, LastName, Email, Phone)" +
                     "values(@FirstName, @LastName, @Email, @Phone)"; 
                 command.Parameters.AddWithValue("@FirstName", customer.FirstName);
@@ -75,10 +79,12 @@ namespace CustomersManagement
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand();
+                connection.Open(); 
+                using SqlCommand command = new SqlCommand();
+                command.Connection = connection;
                 command.CommandText = "update Customer set " +
                     "FirstName=@FirstName, LastName=@LastName, Email=@Email, Phone=@Phone" +
-                    "where Id=@Id";
+                    " where Id=@Id";
 
                 command.Parameters.AddWithValue("@FirstName", customer.FirstName);
                 command.Parameters.AddWithValue("@LastName", customer.LastName);
@@ -95,7 +101,9 @@ namespace CustomersManagement
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = new SqlCommand();
+                connection.Open(); 
+                using SqlCommand command = new SqlCommand();
+                command.Connection = connection;
                 command.CommandText = "delete from Customer where Id=@Id";
                 command.Parameters.AddWithValue("@Id", id);
 

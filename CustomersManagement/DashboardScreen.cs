@@ -36,7 +36,7 @@ namespace CustomersManagement
             customersTable.Columns.Add("CreatedAt", typeof(DateTime));
             // Add more columns as needed based on Customer properties
 
-            foreach (var customer in s)
+            foreach (var customer in customersList)
             {
                 customersTable.Rows.Add(customer.Id, customer.FirstName + ' ' + customer.LastName, customer.Email, customer.Phone, customer.CreatedAt);
                 // Add more fields as needed based on Customer properties

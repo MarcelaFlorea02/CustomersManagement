@@ -13,6 +13,24 @@ public partial class CreateScreen : Form
 
     private async void saveButton_Click(object sender, EventArgs e)
     {
+        var validation = CustomerValidator.Validate(firstNameInput.Text,
+            lastNameInput.Text, emailInput.Text, phoneInput.Text);
+
+        if (!validation.IsValid)
+        {
+            MessageBox.Show(this, validation.Message, "Validation",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            switch (validation.FieldName)
+            {
+                case "FirstName": firstNameInput.Focus(); break;
+                case "LastName": lastNameInput.Focus(); break;
+                case "Email": emailInput.Focus(); break;
+                case "Phone": phoneInput.Focus(); break;
+            }
+            return;
+        }
+
         try
         {
             DbHelper dbHelper = new DbHelper();
@@ -24,14 +42,17 @@ public partial class CreateScreen : Form
                 Phone = phoneInput.Text
             };
             await dbHelper.CreateCustomerAsync(newCustomer);
-            this.Hide();
-
             await _parent.LoadDataAsync();
         }
-        catch (Exception ex) {
+        catch (Exception ex)
+        {
             Trace.TraceError("Create Customer error: {0}", ex.Message);
             MessageBox.Show(this, "An error occured while trying to create a customer. See logs for details",
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        finally
+        {
+            this.Hide();
         }
     }
 }

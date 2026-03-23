@@ -32,7 +32,6 @@ public partial class UpdateScreen : Form
                 Phone = phoneInput.Text
             };
             await dbHelper.UpdateCustomerAsync(updatedCustomer);
-            this.Hide();
             await _parent.LoadDataAsync();
         }
         catch (Exception ex)
@@ -40,6 +39,10 @@ public partial class UpdateScreen : Form
             Trace.TraceError("Update Customer error: {0}", ex.Message);
             MessageBox.Show(this, "An error occured while trying to update a customer. See logs for details",
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        finally
+        {
+            this.Hide();
         }
     }
 }

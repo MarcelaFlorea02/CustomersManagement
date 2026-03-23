@@ -81,6 +81,13 @@ public partial class DashboardScreen : Form
                     "No selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            var confirm = MessageBox.Show(this, "Are you sure you want to delete the customer?",
+                "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes)
+                return;
+
             DbHelper dbHelper = new DbHelper();
             if (dataGridView1.SelectedRows.Count > 0)
             {
